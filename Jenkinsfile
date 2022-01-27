@@ -5,9 +5,18 @@ pipeline {
         EMAIL_TO = 'raghavjaggu@gmail.com'
     }
     stages {
-        stage('Hello') {
+
+        stage('Git checkout') {
+                steps {
+                    git credentialsId: '7f3ba6a0-5b4f-43ea-92f9-6221d78fc666', url: 'https://github.com/aarya9/test2701.git'
+                }
+            }
+    
+        stage('terraform init') {
             steps {
                 echo 'Hello World'
+                sh 'cd dev' 
+                sh label:'', script:'terraform init'
             }
         }
     }
