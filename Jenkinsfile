@@ -19,6 +19,18 @@ pipeline {
                 sh label:'', script:'terraform init'
             }
         }
+        stage('terraform plan') {
+            steps {
+
+                sh label:'', script:'terraform plan'
+            }
+        }
+        stage('terraform apply') {
+            steps {
+ 
+                sh label:'', script:'terraform apply --auto-approve'
+            }
+        }
     }
     post {
         failure {
